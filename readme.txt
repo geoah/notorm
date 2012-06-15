@@ -2,6 +2,8 @@ NotORM - http://www.notorm.com/
 
 NotORM is a PHP library for simple working with data in the database. The most interesting feature is a very easy work with table relationships. The overall performance is also very important and NotORM can actually run faster than a native driver.
 
+NotORM Entity - added Entity and EntityMapper. In this branch NotORM can work with entities. For more information visit https://github.com/lichtner/notorm/wiki/NotORM-Entity
+
 Requirements:
 PHP 5.1+
 any database supported by PDO (tested with MySQL, SQLite, PostgreSQL, MS SQL, Oracle)

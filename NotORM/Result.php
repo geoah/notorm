@@ -234,7 +234,11 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 		if (!isset($data[$this->primary]) && ($id = $this->notORM->connection->lastInsertId($this->notORM->structure->getSequence($this->table)))) {
 			$data[$this->primary] = $id;
 		}
-		return new $this->notORM->rowClass($data, $this);
+		$rowClass = $this->notORM->rowClass;
+		if (isset($this->notORM->entityMapper)) {
+			$rowClass = $this->notORM->entityMapper->getEntity($this->table, $rowClass);
+		}
+		return new $rowClass($data, $this);
 	}
 	
 	/** Update all rows in result set
@@ -595,7 +599,11 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 							$this->access[$this->primary] = true;
 						}
 					}
-					$this->rows[$key] = new $this->notORM->rowClass($row, $this);
+					$rowClass = $this->notORM->rowClass;
+					if (isset($this->notORM->entityMapper)) {
+						$rowClass = $this->notORM->entityMapper->getEntity($this->table, $rowClass);
+					}
+					$this->rows[$key] = new $rowClass($row, $this);
 				}
 			}
 			$this->data = $this->rows;
