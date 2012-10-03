@@ -1,13 +1,17 @@
 {
-	"name": "vrana/notorm",
-	"description": "NotORM is a PHP library for simple working with data in the database.",
-	"keywords": ["database", "dbal"],
-	"homepage": "http://www.notorm.com/",
+	"name": "lichtner/notorm-entity",
+	"description": "NotORM fork which added entity and entity mapper into NotORM.",
+	"keywords": ["database", "dbal", "entity"],
+	"homepage": "https://github.com/lichtner/notorm/tree/entity",
 	"license": ["Apache-2.0", "GPL-2.0+"],
 	"authors": [
 		{
 			"name": "Jakub Vrána",
 			"homepage": "http://www.vrana.cz/"
+		},
+		{
+			"name": "Marek Lichtner",
+			"homepage": "http://licht.sk/"
 		}
 	]
 }
