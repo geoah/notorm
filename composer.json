@@ -1,7 +1,7 @@
 {
 	"name": "lichtner/notorm-entity",
 	"description": "NotORM fork which added entity and entity mapper into NotORM.",
-	"keywords": ["database", "dbal", "entity"],
+	"keywords": ["database", "dbal", "notorm", "entity"],
 	"homepage": "https://github.com/lichtner/notorm/tree/entity",
 	"license": ["Apache-2.0", "GPL-2.0+"],
 	"authors": [
