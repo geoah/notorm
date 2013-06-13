@@ -601,6 +601,9 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 						}
 					}
 					$rowClass = new $this->notORM->rowClass($row, $this);
+					if ($this->rowClassModifier instanceof IRowClassModifier) {
+						$rowClass = $this->rowClassModifier->modify($rowClass);
+					}
 					if ($this->notORM->assocArray) {
 						$this->rows[$key] = $rowClass;
 					} else {
@@ -611,7 +614,16 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 			$this->data = $this->rows;
 		}
 	}
-	
+
+	protected $rowClassModifier;
+
+	/** If you can modify rowClass set this
+	 * @param IRowClassModifier $rowClassModifier
+	 */
+	function setRowClassModifier(IRowClassModifier $rowClassModifier) {
+		$this->rowClassModifier = $rowClassModifier;
+	}
+
 	/** Fetch next row of result
 	* @param string column name to return or an empty string for the whole row
 	* @return mixed string or null with $column, NotORM_Row without $column, false if there is no row
@@ -769,4 +781,13 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 		return $this->data;
 	}
 	
+}
+
+interface IRowClassModifier {
+
+	/**
+	 * @param NotORM_Row $row
+	 * @return NotORM_Row
+	 */
+	public function modify(NotORM_Row $row);
 }
