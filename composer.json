@@ -13,5 +13,8 @@
 			"name": "Marek Lichtner",
 			"homepage": "http://licht.sk/"
 		}
-	]
+	],
+  "autoload": {
+    "files": ["NotORM.php"]
+  }
 }
