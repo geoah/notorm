@@ -3,7 +3,7 @@
 /** Single row representation
 */
 class NotORM_Row extends NotORM_Abstract implements IteratorAggregate, ArrayAccess, Countable {
-	private $modified = array();
+	protected $modified = array();
 	protected $row, $result;
 	
 	/** @access protected must be public because it is called from Result */
