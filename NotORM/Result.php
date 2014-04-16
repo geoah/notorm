@@ -94,7 +94,7 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 				preg_match_all('~\\b([a-z_][a-z0-9_]*)([.:])~i', $names, $matches, PREG_SET_ORDER);
 				foreach ($matches as $match) {
 					list(, $name, $delimiter) = $match;
-					$table = $this->notORM->structure->getReferencedTable($name, $parent);
+					$table = $this->notORM->structure->getReferencedTable($name, $parent) ? : $name;
 					$column = ($delimiter == ':' ? $this->notORM->structure->getPrimary($parent) : $this->notORM->structure->getReferencedColumn($name, $parent));
 					$primary = ($delimiter == ':' ? $this->notORM->structure->getReferencedColumn($parent, $table) : $this->notORM->structure->getPrimary($table));
 					$return[$name] = " LEFT JOIN $table" . ($table != $name ? " AS $name" : "") . " ON $parent.$column = $name.$primary"; // should use alias if the table is used on more places
